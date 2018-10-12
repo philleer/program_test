@@ -1,0 +1,8 @@
+# No redundant readme file #
+README.txt
+
+# Ignore all the object files #
+*.o
+
+# No java at all #
+*.java
