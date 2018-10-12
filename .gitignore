@@ -3,6 +3,14 @@ README.txt
 
 # Ignore all the object files #
 *.o
+./*/*.o
+
+# No execute file included #
+./hello/hello
 
 # No java at all #
 *.java
+
+# Ignore all the .git folder #
+.git
+./*/.git
