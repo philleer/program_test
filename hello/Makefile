@@ -14,4 +14,3 @@ hello: ${OBJS}
 .PHONY: clean
 clean:
 	${RM} *.o
-
