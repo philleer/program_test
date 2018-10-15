@@ -1,14 +1,14 @@
-
 curr_dir := ${shell pwd}
-files := ${shell echo *.cc}
+SRCS := ${shell echo *.cc}
+OBJS := $(SRCS:.cc=.o)
 
-CXX ?= g++ -std=c++11
+CXX := g++ -std=c++11
 CXXFLAGS := -O -Wall
 
-hello: *.o
+hello: ${OBJS}
 	${CXX} ${CXXFLAGS} $^ -o $@
 
-*.o: ${files}
+*.o: ${SRCS}
 	${CXX} ${CXXFLAGS} -c $^
 
 .PHONY: clean
