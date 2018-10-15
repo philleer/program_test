@@ -2,7 +2,8 @@
 #define PRINTTEST_H
 
 #include <iostream>
-#include <string>
+#include <vector>
+#include <iterator>
 
 class printtest
 {
@@ -17,5 +18,8 @@ private:
 	size_t x;
 	size_t y;
 };
+
+template<typename ForwardIterator> 
+void square(ForwardIterator first, ForwardIterator last);
 
 #endif /* ifndef PRINTTEST_H */
