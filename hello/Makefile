@@ -10,7 +10,7 @@ hello: ${OBJS}
 	${CXX} ${CXXFLAGS} $^ -o $@
 
 .PHONY: hello_clear
-hello_clear: ${OBJS}
+hello: ${OBJS}
 	${CXX} ${CXXFLAGS} $^ -o $@
 	@${RM} -rv *.o
 	@echo "------Done!------"
