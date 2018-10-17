@@ -1,13 +1,12 @@
----
-Some basic command line in the bash.
+## Some basic command line in the bash.
 
-e.g.
+* [hello_world.sh](https://github.com/philleer/program_test/blob/master/bashfiles/hello_world.sh) : hello_world of bash script
 
-	hello_world of bash script
-	list the name of file in the folder
-	...
----
+* [listdir.sh](https://github.com/philleer/program_test/blob/master/bashfiles/listdir.sh) : list the name of file in the folder
 
-<p align="center">
-Copyright ©philleer 2018. All rights reserved. 
-</p>
+* ...
+
+
+ ```python
+                             Copyright © philleer 2018. All rights reserved. 
+ ```
