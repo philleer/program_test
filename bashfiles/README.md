@@ -7,9 +7,6 @@
 * ...
 
 
-<p align="center">
-
   ```python
   Copyright ©philleer 2018. All rights reserved. 
   ```
-</p>
