@@ -6,10 +6,9 @@
 #include <vector>
 #include "printtest.h"
 
-template<typename ForwardIterator> void square(ForwardIterator first, ForwardIterator last);
-
-int main(int argc, const char *argv[])
+int main(int argc, const char** argv)
 {
+	// arguments
 	if(argc < 2) {
 		std::cout << "No arguments input!" << std::endl;
 	}
@@ -20,9 +19,11 @@ int main(int argc, const char *argv[])
 		std::cout << std::endl;
 	}
 
+	// headers including problem
 	printtest num(1, 2);
 	num.add();
 	
+	// iterator test
 	std::ifstream myInt("data");
 	std::istream_iterator<int> iter(myInt);
 	std::istream_iterator<int> eos;
@@ -40,16 +41,14 @@ int main(int argc, const char *argv[])
 	std::cout << std::endl;
 	square(v.begin(), v.end());
 
-	return 0;
-}
+	// template test
+	fun1();
+	fun2();
 
-template<typename ForwardIterator>
-void square(ForwardIterator first, ForwardIterator last) {
-		std::cout << "  Square: ";
-		for(; first != last; first++) {
-				*first = (*first) * (*first);
-				std::cout << *first << " ";
-		}
-		std::cout << std::endl;
+	// thistest
+	thistest _name("wonder");
+	std::cout << "class Name: " << _name.getname() << std::endl;
+
+	return 0;
 }
 
