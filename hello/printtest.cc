@@ -1,5 +1,12 @@
 #include "printtest.h"
 
+void printDate(const Date& date) {
+	std::cout << date.getYear() << "/"
+			  << date.getMonth() << "/"
+			  << date.getDay() << "/"
+			  << std::endl;
+}
+
 std::string thistest::getname() {
 		this->name = "iamhere";
 		return this->name;
