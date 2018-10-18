@@ -8,6 +8,35 @@
 #define TEST_NAMESPACE_BEGIN namespace test {
 #define TEST_NAMESPACE_END }
 
+class Date
+{
+public:
+	Date(int year, int month, int day) {
+		setDate(year, month, day);
+	}
+
+	void setDate(int year, int month, int day) {
+		m_year = year;
+		m_month = month;
+		m_day = day;
+	}
+
+	int getYear() const { 
+		return m_year;
+	}
+	int getMonth() const {
+		return m_month;
+	}
+	int getDay() const {
+		return m_day;
+	}
+
+private:
+	int m_year;
+	int m_month;
+	int m_day;
+};
+
 class thistest
 {
 public:
@@ -113,4 +142,5 @@ T Quene<T>::pop() {
 void fun1();
 void fun2();
 
+void printDate(const Date& date);
 #endif /* ifndef PRINTTEST_H */
