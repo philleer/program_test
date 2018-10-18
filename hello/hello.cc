@@ -5,6 +5,7 @@
 #include <numeric>
 #include <vector>
 #include "printtest.h"
+#include "./libs/searchtest.h"
 
 int main(int argc, const char** argv)
 {
@@ -48,6 +49,14 @@ int main(int argc, const char** argv)
 	// thistest
 	thistest _name("wonder");
 	std::cout << "class Name: " << _name.getname() << std::endl;
+
+	// consttest
+	Date date(2018, 10, 18);
+	printDate(date);
+
+	// header files search for makefile
+	searchtest stest("Nothing new here");
+	stest.printtest();
 
 	return 0;
 }
