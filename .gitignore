@@ -14,3 +14,7 @@ hello/hello
 # Ignore all the .git folder #
 .git
 */.git
+
+# No ./*/build directory included #
+hello/build/
+*/build/

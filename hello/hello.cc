@@ -5,7 +5,7 @@
 #include <numeric>
 #include <vector>
 #include "printtest.h"
-#include "./libs/searchtest.h"
+#include "libs/searchtest.h"
 
 int main(int argc, const char** argv)
 {
