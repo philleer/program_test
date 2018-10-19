@@ -11,7 +11,9 @@ CXXFLAGS += -std=c++11
 CXXFLAGS += -pthread
 
 hello: ${OBJS}
+	@echo "-> Building..."
 	${CXX} ${CXXFLAGS} $^ -o $@
+	@echo "-> Cleaning..."
 	@${RM} -rv *.o ${LIBS_ROOT}/*.o
 	@echo "------Done!------"
 
@@ -19,6 +21,7 @@ hello: ${OBJS}
 	${CXX} ${CXXFLAGS} -c $^
 
 clean:
+	@echo "-> Cleaning..."
 	@${RM} -v *.o ${LIBS_ROOT}/*.o
 
 .PHONY: clean
