@@ -106,8 +106,8 @@ private:
 } nullptr = {};
 ```
 
-Reference
+**Reference**
 
-**airtrack** [NULL、0、nullptr](http://www.cppblog.com/airtrack/archive/2012/09/16/190828.html)
+airtrack [NULL、0、nullptr](http://www.cppblog.com/airtrack/archive/2012/09/16/190828.html)
 
 > /* END OF NULLPTR_MD */
