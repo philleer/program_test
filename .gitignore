@@ -16,5 +16,5 @@ hello/hello
 */.git
 
 # No ./*/build directory included #
-./hello/build
-
+hello/build/
+*/build/
