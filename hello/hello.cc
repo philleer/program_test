@@ -4,6 +4,8 @@
 #include <fstream>
 #include <numeric>
 #include <vector>
+#include <future>
+#include <exception>
 #include "printtest.h"
 #include "libs/searchtest.h"
 
@@ -33,6 +35,14 @@ int main(int argc, const char** argv)
 		   	  << accumulate(iter, eos, 0)
 			  << std::endl;
 
+	std::vector<int> vectest{ 1, 2 , 3, 0};
+	for (size_t x : vectest) {
+			std::cout << x << " ";
+	}
+	std::cout << std::endl;
+	bool boolvalue = lastGreaterThanFirst( vectest );
+	std::cout << "The bool value of boolvalue " << boolvalue << std::endl;
+
 	int arr[] = {1, 3, 5, 7, 9};
 	std::vector<int> v(arr, arr + sizeof(arr)/sizeof(arr[0]));
 	std::cout << "Elements: ";
@@ -57,6 +67,9 @@ int main(int argc, const char** argv)
 	// header files search for makefile
 	searchtest stest("Nothing new here");
 	stest.printtest();
+
+	// output prime number less than or equal to n
+	isprime(1000, 20);
 
 	return 0;
 }

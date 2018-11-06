@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 #include <iterator>
+#include <future>
+#include <exception>
 
 #define TEST_NAMESPACE_BEGIN namespace test {
 #define TEST_NAMESPACE_END }
@@ -95,7 +97,7 @@ private:
 // Quene -- Template definition
 template<typename T>
 Quene<T>::Quene() {
-	mHead = NULL;
+	mHead = 0;
 }
 
 template<typename T>
@@ -112,14 +114,14 @@ template<typename T>
 void Quene<T>::push(T e) {
 	NODE *ptr = new node;
 	ptr->data = e;
-	ptr->next = NULL;
-	if (mHead == NULL) {
+	ptr->next = 0;
+	if (mHead == 0) {
 		mHead = ptr;
 		return;
 	}
 	NODE *cur = mHead;
 	while (cur) {
-		if (cur->next == NULL) {
+		if (cur->next == 0) {
 			cur->next = ptr;
 			return;
 		}
@@ -129,8 +131,8 @@ void Quene<T>::push(T e) {
 
 template<typename T>
 T Quene<T>::pop() {
-	if (mHead == NULL) {
-		return NULL;
+	if (mHead == 0) {
+		return 0;
 	}
 	NODE *tmp = mHead;
 	T d = mHead->data;
@@ -139,8 +141,21 @@ T Quene<T>::pop() {
 	return d;
 }
 
+template<typename C>
+bool lastGreaterThanFirst(const C& container) {
+		if (container.empty()) {
+				return false;
+		}
+		typename C::const_iterator begin(container.begin());
+		typename C::const_iterator end(container.end());
+		return *--end > *begin;
+
+}
+
 void fun1();
 void fun2();
 
 void printDate(const Date& date);
+void isprime(int n, const int NUMBER_PER_LINE);
+
 #endif /* ifndef PRINTTEST_H */
