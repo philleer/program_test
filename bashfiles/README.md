@@ -1,6 +1,6 @@
 # Some basic command line in the bash
 
-> Description and links
+> **Descriptions and links shown as below**
 
 * [hello_world.sh](https://github.com/philleer/program_test/blob/master/bashfiles/hello_world.sh) : hello_world of bash script
 
