@@ -20,7 +20,7 @@ hello/build/
 */build/
 
 # LOG file not included.
-./bashfiles/log*
+./bashfiles/log*.txt
 ./commandline/playground/log*
 ./*/log*
 ./*/*/log*
