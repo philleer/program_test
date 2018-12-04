@@ -1,0 +1,8 @@
+total 104K -rw-rw-r-- 1 cvnewbee cvnewbee 2.6K 11月 18 16:47 bashtest.sh -rw-r--r-- 1 cvnewbee cvnewbee 12K 11月 18 16:47 .bashtest.sh.swp drwxrwxr-x 2 cvnewbee cvnewbee 4.0K 10月 1 18:43 dir1 drwxrwxr-x 2 cvnewbee cvnewbee 4.0K 10月 1 18:43 dir2 -rw-rw-r-- 1 cvnewbee cvnewbee 41K 11月 18 16:26 foo.html -rw-rw-r-- 1 cvnewbee cvnewbee 105 10月 1 21:52 lazydog.txt -rw-rw-r-- 1 cvnewbee cvnewbee 770 11月 14 18:44 log_20181114.txt -rw-rw-r-- 1 cvnewbee cvnewbee 803 11月 17 17:28 log_20181117.txt -rw-rw-r-- 1 cvnewbee cvnewbee 0 11月 18 16:47 log_20181118.txt -rw-rw-r-- 1 cvnewbee cvnewbee 22K 10月 1 22:16 ls-output.txt
+Not what we want!
+7: [: =: unary operator expected
+bashtest.sh: line 9: [: =: unary operator expected
+
+real	0m0.064s
+user	0m0.003s
+sys	0m0.001s
