@@ -20,8 +20,16 @@ hello/build/
 */build/
 
 # LOG file not included.
-./bashfiles/log*.txt
-./commandline/playground/log*
-./*/log*
-./*/*/log*
+bashfiles/log*
+commandline/playground/log*
+*/log*
+*/*/log*
+
+# Some other files not to be pushed
+commandline/playground/foo.html
+
+#======================================#
+# Note for ignore grammar rules
+#======================================#
+# no ./ sign before the file/folder name
 
