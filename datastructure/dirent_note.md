@@ -34,9 +34,8 @@
 >     void         					 seekdir(DIR *, long int);
 >     long int     					telldir(DIR *);
 
-
 ---
-<p align="center"><font size="1">UNIX ® is a registered Trademark of The Open Group.</font></p>
-<p align="center"><font size="1">Copyright © 1997 The Open Group</font></p>
+<p align="center"><font size="0.5">UNIX ® is a registered Trademark of The Open Group.</font></p>
+<p align="center"><font size="0.5">Copyright © 1997 The Open Group</font></p>
 
 ---
