@@ -38,7 +38,6 @@
 * * *
 
 <center><font size="2">UNIX ® is a registered Trademark of The Open Group.  
-Copyright © 1997 The Open Group  
-</font></center>
+Copyright © 1997 The Open Group</font></center>
 
 * * *
