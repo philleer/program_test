@@ -1,4 +1,3 @@
-echo Hello world!
 date_string1=`date`
 date_str1=${date_string1// /}
 year1=${date_str1#*CST}
@@ -11,13 +10,9 @@ var=http://www.aaa.com/123.html
 vartmp="http://www.aaa.com/123.html"
 var1=${var#*//}
 var2=${var:0-8:3}
-echo $var--$var1--$vartmp
-echo $var2
-date
 date_string=`date`
 date_str=${date_string// /}
-year=${date_str#*CST}
-echo $year) | tee $logn
+year=${date_str#*CST} ) | tee $logn
 
 # (time (../hello/build/hello) | tee log_time.txt) 2>> log_time.txt
 

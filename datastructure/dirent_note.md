@@ -1,11 +1,13 @@
 
-####NAME
+##### NAME
 > dirent.h - format of directory entries
 
-####SYNOPSIS
+##### SYNOPSIS
+
 > \#include < dirent.h >
 
-####DESCRIPTION
+##### DESCRIPTION
+
 > The internal format of directories is unspecified.
 > 
 > The < *dirent.h* > header defines the following data type through **typedef**:
@@ -24,17 +26,16 @@
 > 
 > The following are declared as functions and may also be defined as macros. Function prototypes must be provided for use with an ISO C compiler.
 >     
->     int								closedir(DIR *);
->     DIR							  *opendir(const char *);
->     struct dirent 				*readdir(DIR *);
->     int            					 readdir_r(DIR *, struct dirent *, struct dirent **);
->     void           				   rewinddir(DIR *);
->     void         					 seekdir(DIR *, long int);
->     long int     					telldir(DIR *);
+>     int             closedir(DIR *);
+>     DIR             *opendir(const char *);
+>     struct dirent 	*readdir(DIR *);
+>     int            	readdir_r(DIR *, struct dirent *, struct dirent **);
+>     void           	rewinddir(DIR *);
+>     void            seekdir(DIR *, long int);
+>     long int        telldir(DIR *);
 
-* * *
-<center><font size="2">UNIX ® is a registered Trademark of The Open Group.  
-Copyright © 1997 The Open Group  
-</font></center>
-* * *
+---
+<p align="center"> <font size="1">UNIX ® is a registered Trademark of The Open Group.</font> </p>
+<p align="center"> <font size="1">Copyright © 1997 The Open Group</font> </p>
 
+---
