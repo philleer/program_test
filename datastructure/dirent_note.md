@@ -1,11 +1,14 @@
 
-####NAME
+#####NAME
+
 > dirent.h - format of directory entries
 
-####SYNOPSIS
+#####SYNOPSIS
+
 > \#include < dirent.h >
 
 ####DESCRIPTION
+
 > The internal format of directories is unspecified.
 > 
 > The < *dirent.h* > header defines the following data type through **typedef**:
