@@ -26,8 +26,8 @@
 > 
 > The following are declared as functions and may also be defined as macros. Function prototypes must be provided for use with an ISO C compiler.
 >     
->     int      closedir(DIR *);
->     DIR      *opendir(const char *);
+>     int          closedir(DIR *);
+>     DIR          *opendir(const char *);
 >     struct dirent 	*readdir(DIR *);
 >     int            	readdir_r(DIR *, struct dirent *, struct dirent **);
 >     void           	rewinddir(DIR *);
