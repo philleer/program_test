@@ -1,8 +1,8 @@
 
-###### NAME
+##### NAME
 > dirent.h - format of directory entries
 
-###### SYNOPSIS
+##### SYNOPSIS
 
 > \#include < dirent.h >
 
