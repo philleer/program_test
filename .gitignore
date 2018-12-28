@@ -18,6 +18,7 @@ hello/hello
 # No ./*/build directory included #
 hello/build/
 */build/
+*/*/build/
 cpptest/*/build/
 
 # LOG file not included.
