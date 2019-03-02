@@ -1,3 +1,3 @@
-/home/cvnewbee/foldertest/git/program_test/opencv_test/build/CMakeFiles/edit_cache.dir
-/home/cvnewbee/foldertest/git/program_test/opencv_test/build/CMakeFiles/rebuild_cache.dir
-/home/cvnewbee/foldertest/git/program_test/opencv_test/build/CMakeFiles/disimg.dir
+/home/cvnewbee/foldertest/git/program_test/opencv_test/disimg/build/CMakeFiles/edit_cache.dir
+/home/cvnewbee/foldertest/git/program_test/opencv_test/disimg/build/CMakeFiles/rebuild_cache.dir
+/home/cvnewbee/foldertest/git/program_test/opencv_test/disimg/build/CMakeFiles/disimg.dir

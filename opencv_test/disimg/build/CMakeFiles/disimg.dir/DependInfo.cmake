@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/cvnewbee/foldertest/git/program_test/opencv_test/disimg.cc" "/home/cvnewbee/foldertest/git/program_test/opencv_test/build/CMakeFiles/disimg.dir/disimg.cc.o"
+  "/home/cvnewbee/foldertest/git/program_test/opencv_test/disimg/disimg.cc" "/home/cvnewbee/foldertest/git/program_test/opencv_test/disimg/build/CMakeFiles/disimg.dir/disimg.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
