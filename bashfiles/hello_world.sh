@@ -3,7 +3,8 @@ date_str1=${date_string1// /}
 year1=${date_str1#*CST}
 name=$0
 filename=${name%.*}
-logn="log_"${filename}_${year1}$1".txt"
+echo ${filename}
+#logn="log_"${filename}_${year1}$1".txt"
 
 (
 var=http://www.aaa.com/123.html
