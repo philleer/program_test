@@ -1,0 +1,47 @@
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <stdlib.h>
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <cfloat>
+#include "slic.h"
+
+int main (int argc, char * argv[]) {
+	if ( argc < 4 ) {
+		std::cerr << "Input not right!\n"
+				<< "./myslic path_to_image number_of_superpixels quality path_to_svae_result" << std::endl;
+	}
+
+	cv::Mat image = cv::imread(argv[1], 1);
+	cv::Mat lab_image = image.clone();
+	cv::cvtColor(image, lab_image, CV_BGR2Lab);
+
+	int w = image.cols, h = image.rows;
+	int nr_supperpixels = atoi(argv[2]);
+	int nc = atoi(argv[3]);
+	double step = sqrt((w * h) / (double) nr_supperpixels);
+
+	Slic slic;
+	slic.generate_superpixels(lab_image, step, nc);
+	slic.create_connectivity(lab_image);
+
+	slic.display_contours(image, CV_RGB(255, 0, 0));
+
+
+	// cd build && ./myslic ../temple0040.png 2000 256 ./result_temple.png
+	if (image.cols > 600) {
+		int scale = image.cols/600;
+		cv::resizeWindow("result", image.cols/scale, image.rows/scale);
+	}
+	cv::imshow("result", image);
+	cv::waitKey(0);
+	slic.colour_with_cluster_means(image);
+	std::vector<int> compression_params;
+	compression_params.push_back(CV_IMWRITE_JPEG_QUALITY);
+	compression_params.push_back(100);
+	cv::imwrite(argv[4], image, compression_params);
+
+	return 0;
+}
