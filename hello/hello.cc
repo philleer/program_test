@@ -70,7 +70,18 @@ int main(int argc, const char** argv)
 
 	// output prime number less than or equal to n
 	isprime(1000, 20);
-
+/*
+#pragma omp parallel for schedule(dynamic)
+	for (int i = 0; i < 1000; ++i)
+	{
+#pragma omp critical
+		std::cout << "print to screen: " << i << "\t" << std::flush;
+#pragma omp critical
+		for (char j = 65; j < 97; ++j)
+				std::cout << "char out: " << j << "\t "<< std::flush;
+		std::cout << std::endl;
+	}
+*/
 	return 0;
 }
 
