@@ -38,6 +38,18 @@ void write_to_file(std::string const& filename) {
 	in.close();
 }
 
+int &get(int *array, int index) {
+		return array[index];
+}
+
+int factorial(int val) {
+	if (val != 0)
+	{
+		return factorial(val-1) * val;
+	}
+	return 1;
+}
+
 int main(int argc, char** argv) {
 	if ( argc < 2) {
 		std::cout << "USAGE:" << std::endl;
@@ -58,7 +70,14 @@ int main(int argc, char** argv) {
 			<<  std::numeric_limits<int>::max()
 			<< std::endl;
 
-	write_to_file("test.txt");
+	// write_to_file("test.txt");
+
+	int arr[]={0,1,2,3,4};
+	std::cout << get(arr, 2) << std::endl;
+	get(arr, 2) = 20;
+	std::cout << get(arr, 2) << std::endl;
+
+	std::cout << "factorial(5): " << factorial(5) << std::endl;
 
 	return 0;
 }
