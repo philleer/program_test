@@ -15,6 +15,8 @@ int main (int argc, char * argv[]) {
 	}
 
 	cv::Mat image = cv::imread(argv[1], 1);
+	while(image.cols > 1000)
+		cv::resize(image, image, cv::Size(image.cols * 0.5, image.rows * 0.5), CV_INTER_LINEAR);
 	cv::Mat lab_image = image.clone();
 	cv::cvtColor(image, lab_image, CV_BGR2Lab);
 
@@ -27,20 +29,22 @@ int main (int argc, char * argv[]) {
 	slic.generate_superpixels(lab_image, step, nc);
 	slic.create_connectivity(lab_image);
 
-	slic.display_contours(image, CV_RGB(255, 0, 0));
+	cv::Mat image_clone = image.clone();	
+	slic.display_contours(image_clone, CV_RGB(255, 0, 0));
 
 
 	// cd build && ./myslic ../temple0040.png 2000 256 ./result_temple.png
-	if (image.cols > 600) {
-		int scale = image.cols/600;
-		cv::resizeWindow("result", image.cols/scale, image.rows/scale);
-	}
-	cv::imshow("result", image);
+	// if (image.cols > 799) {
+	// 	int scale = 800 / image.cols;
+	// 	cv::resizeWindow("result", image.cols * scale, image.rows * scale);
+	// }
+	cv::imshow("result", image_clone);
 	cv::waitKey(0);
-	slic.colour_with_cluster_means(image);
 	std::vector<int> compression_params;
 	compression_params.push_back(CV_IMWRITE_JPEG_QUALITY);
 	compression_params.push_back(100);
+	cv::imwrite("a15result_cache.jpg", image_clone, compression_params);
+	slic.colour_with_cluster_means(image);
 	cv::imwrite(argv[4], image, compression_params);
 
 	return 0;
