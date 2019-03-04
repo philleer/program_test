@@ -20,6 +20,7 @@ hello/build/
 opencv_test/match/build/
 opencv_test/myslic/build/
 opencv_test/disimg/build/
+slic/
 */build/
 */*/build/
 cpptest/*/build/
