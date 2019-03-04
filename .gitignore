@@ -21,6 +21,12 @@ opencv_test/match/build/
 opencv_test/myslic/build/
 opencv_test/disimg/build/
 slic/
+cpptest/eulertest/
+cpptest/visualhull/
+*.zip
+slic (copy)/
+sparsebatchsfm-test/
+superseg/
 */build/
 */*/build/
 cpptest/*/build/
