@@ -11,6 +11,7 @@
 #include <string>
 #include <fstream>
 #include <limits>
+#include <vector>
 
 void write_to_file(std::string const& filename) {
 	std::ifstream in(filename.c_str(), std::ios::binary);
@@ -79,6 +80,9 @@ int main(int argc, char** argv) {
 
 	std::cout << "factorial(5): " << factorial(5) << std::endl;
 
+	std::vector<int> temp = {2019,20};
+	for (int i = 0; i < 3; i++)
+			std::cout << temp[i] << std::endl;
 	return 0;
 }
 
