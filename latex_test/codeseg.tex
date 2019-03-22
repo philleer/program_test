@@ -1,0 +1,209 @@
+% Latex code segment for flow chart and shell symbols
+
+
+\documentclass[a4paper,UTF8]{ctexart}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,chains}
+\usepackage{lscape}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\begin{document}
+\pagestyle{empty}
+
+shell命令执行过程完全解析，无论是通配符~\ref{wildcard}~、元字符~\ref{metachar}~或者转义字符也好，都有其特定含义和用法，工欲善其事必先利其器，需要我们详细解剖整个过程。
+
+\begin{figure}[htbp]
+\centering
+
+\tikzstyle{startstop} = [rectangle,rounded corners,minimum width=3cm,minimum height=1cm,text centered,draw=black,fill=white!30]
+\tikzstyle{io} = [trapezium,trapezium left angle=70,trapezium right angle=110,minimum width=3cm,minimum height=1cm,text centered,draw=black,fill=white!30]
+\tikzstyle{process} = [rectangle,minimum width=3cm,minimum height=1cm,text centered,text width=3cm,draw=black,fill=white!30]
+\tikzstyle{decision} = [diamond,minimum width=3cm,minimum height=1cm,text centered,draw=black,fill=white!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{tikzpicture}[node distance=2cm]
+
+% \node (start) [startstop] {Start};
+% \node (input1) [io,below of=start] {Input};
+% \node (process1) [process,below of=input1] {Process 1};
+% \node (decision1) [decision,below of=process1,yshift=-0.5cm] {Decession 1};
+% \node (process2a) [process,below of=decision1,yshift=-0.5cm] {Process 2aaa};
+% \node (process2b) [process,right of=decision1,xshift=2cm] {Process 2b};
+% \node (out1) [io,below of=process2a] {Output};
+% \node (stop) [startstop,below of=out1] {Stop};
+% 
+% \draw [arrow] (start) -- (input1);
+% \draw [arrow] (input1) -- (process1);
+% \draw [arrow] (process1) -- (decision1);
+% \draw [arrow] (decision1) -- node[anchor=east] {yes} (process2a);
+% \draw [arrow] (decision1) -- node[anchor=south] {no} (process2b);
+% \draw [arrow] (process2b) |- (process1);
+% \draw [arrow] (process2a) -- (out1);
+% \draw [arrow] (out1) -- (stop);
+
+\node (start) [process] {读取命令行};
+\node (process1) [process,right of=start,xshift=2cm] {历史命令替换};
+\node (process2) [process,right of=process1,xshift=2cm] {别名替换};
+\node (process3) [process,right of=process2,xshift=2cm] {花括号扩展};
+\node (process4) [process,below of=process3] {波浪号扩展};
+\node (process5) [process,left of=process4,xshift=-2cm] {I/O重定向};
+\node (process6) [process,left of=process5,xshift=-2cm] {变量替换};
+\node (process7) [process,left of=process6,xshift=-2cm] {命令替换};
+\node (process8) [process,below of=process7] {单词解析};
+\node (process9) [process,right of=process8,xshift=2cm] {文件名生成};
+\node (process10) [process,right of=process9,xshift=2cm] {引用字符处理};
+\node (process11) [process,right of=process10,xshift=2cm] {进程替换};
+\node (process12) [process,below of=process11] {环境处理};
+\node (process13) [process,left of=process12,xshift=-2cm] {执行命令};
+\node (process14) [process,left of=process13,xshift=-2cm] {跟踪执行过程};
+\node (stop) [process,left of=process14,,xshift=-2cm] {输出结果};
+
+\draw [arrow] (start) -- (process1);
+\draw [arrow] (process1) -- (process2);
+\draw [arrow] (process2) -- (process3);
+\draw [arrow] (process3) -- (process4);
+\draw [arrow] (process4) -- (process5);
+\draw [arrow] (process5) -- (process6);
+\draw [arrow] (process6) -- (process7);
+\draw [arrow] (process7) -- (process8);
+\draw [arrow] (process8) -- (process9);
+\draw [arrow] (process9) -- (process10);
+\draw [arrow] (process10) -- (process11);
+\draw [arrow] (process11) -- (process12);
+\draw [arrow] (process12) -- (process13);
+\draw [arrow] (process13) -- (process14);
+\draw [arrow] (process14) -- (stop);
+
+\end{tikzpicture}
+%\caption{shell命令解析流程}
+\end{figure}
+
+\newgeometry{left=2.5cm,right=2.5cm,,top=2.5cm,bottom=2.5cm}
+
+\begin{landscape}
+\begin{table}[p]
+	\renewcommand{\arraystretch}{1.5}
+	\newcommand{\tc}[1]{\multicolumn{1}{c}{#1}}
+	\newcommand{\tl}[1]{\multicolumn{1}{l}{#1}}
+	\newcommand{\tr}[1]{\multicolumn{1}{r}{#1}}
+	\centering
+	\caption[wildcard]{Shell通配符}
+	\label{wildcard}
+	\vspace{0.8em}\centering
+	\begin{tabular}{cll}
+		\toprule[2pt]
+		\textbf{字符} & \tc{\textbf{描述}} & \tc{\textbf{示例}}\\[2pt]\midrule[0.8pt]
+		$\ast$ & 匹配0或多个字符 & a$\ast$b表示a与b之间可以有任意长度的任意字符，包括0，如ab,a01b,axyzb等\\[8pt]
+		? & 匹配任意单个字符 & a?b表示a与b之间必须也只能有一个字符，但可以是任意字符，如aab,a0b等\\[8pt]
+		[list] & 匹配list中任意单个字符 & a[xyz]b表示a与b之间只能为x或y或z，匹配axb,ayb,azb等\\[8pt]
+		[!list] & 匹配list之外的任意单个字符 & a[!0-9]b表示a与b之间只能有一个非阿拉伯数字，匹配axb,a-b,aZb等\\[8pt]
+		[c1-c2] & 匹配c1-c2之间的任意单个字符,要写成递增 & a[0-9]b表示a与b之间只能有一个阿拉伯数字，如a0b,a8b等\\[8pt]
+		\{string1,string2,...\} & 匹配穷举列表中的其中一个字符串 & a\{abc,xyz,123\}b表示a与b之间只能是abc或xyz或123三个字符串之一\\[8pt]
+		\bottomrule[2pt]
+	\end{tabular}
+\end{table}
+\end{landscape}
+
+\begin{table}[htbp]
+	\renewcommand{\arraystretch}{1.5}
+	\newcommand{\tc}[1]{\multicolumn{1}{c}{#1}}
+	\centering
+	\caption[metachar]{Shell元字符列表}
+	\label{metachar}
+	\vspace{0.8em}\centering
+	\begin{tabular}{cl}
+		\toprule[2pt]
+		\textbf{字符} & \tc{\textbf{描述}}\\[2pt]
+		\midrule[0.8pt]
+		IFS & 由<space>或<tab>或<enter>三者之一组成\\[8pt]
+		CR & 由<enter>产生\\[8pt]
+ 		= & 设定变量\\[8pt]
+ 		\$ & 作变量或运算替换\\[8pt]
+ 		> & 重定向输出stdout\\[8pt]
+ 		< & 重定向输入stdin\\[8pt]
+		$\mid$ & 管道命令\\[8pt]
+ 		\& & 重定向file descriptor，或将命令置于后台运行\\[8pt]
+ 		(\ ) & 将其内的命令置于nested subshell执行，或用于运算或命令替换\\[8pt]
+ 		\{\ \} & 将其内的命令置于non-named function中执行，或用在变量替换的界定范围\\[8pt]
+ 		; & 在前一个命令结束时，忽略其返回值，继续执行下一个命令\\[8pt]
+ 		\&\& & 在前一个命令结束时，若返回值为true，则继续执行下一个命令\\[8pt]
+ 		$\mid\mid$ & 在前一个命令结束时，若返回值为false，则继续执行下一个命令\\[8pt]
+ 		! & 执行history列表中的命令\\[8pt]
+ 		\bottomrule[2pt]
+	\end{tabular}
+\end{table}
+
+\cleardoublepage
+
+\begin{table}[htbp]
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\tc}[1]{\multicolumn{1}{c}{#1}}
+\centering
+\caption[escape]{Shell转义符}
+\label{escape}
+\vspace{1.0em}
+\centering
+	\begin{tabular}{cl}
+		\toprule[2pt]
+			\textbf{字符} & \tc{\textbf{描述}}\\[2pt]
+		\midrule[0.8pt]
+			$\`$ $\'$ & 又称硬转义，其内部所有shell元字符、通配符都失效，需要注意中间不允许出现单引号$\'$\\[8pt]
+			$\`$ $\`$ $\'$ $\'$ & 又称软转义，其内部只允许出现特定的shell元字符：\$用于参数替换，$\`$用于命令代替\\[8pt]
+			$\backslash$ & 又称转义，去除其后紧跟的元字符或通配符的特殊含义\\[8pt]
+		\bottomrule[2pt]
+	\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+	\renewcommand{\arraystretch}{1.5}
+	\newcommand{\tc}[1]{\multicolumn{1}{c}{#1}}
+	\centering
+	\caption[examples]{Shell一些转义字符及其含义}
+	\label{examples}
+	\vspace{1.0em}
+	\centering
+	\begin{tabular}{rl}
+		\toprule[2pt]
+		\tc{\textbf{字符}} & \tc{\textbf{描述}}\\[2pt]
+		\midrule[0.8pt]
+		$\backslash$a & 输出警告音\\[8pt]
+		$\backslash$b & 退格，向左删除一个字符\\[8pt]
+		$\backslash$e \ $\backslash$E & <ESC>\\[8pt]
+		$\backslash$f & 换页符\\[8pt]
+		$\backslash$n & 换行\\[8pt]
+		$\backslash$r & 回车\\[8pt]
+		$\backslash$t & 制表符，即TAB\\[8pt]
+		$\backslash$v & 垂直制表符\\[8pt]
+		$\backslash\backslash$ & 输入$\backslash$本身\\[8pt]
+		$\backslash$ $\'$ & 输入单引号$\'$本身\\[8pt]
+		$\backslash$ $\'$ $\'$ & 输入单引号$\'$ $\'$本身\\[8pt]
+		$\backslash$nnn & 按照八进制ASCII码表输出相应字符，n表示一位八进制数\\[8pt]
+		$\backslash$xHH & 按照十六进制ASCII码表输出相应字符，h表示一位十六进制数\\[8pt]
+		$\backslash$cx & 取消输出行末的换行符\\[8pt]
+		\bottomrule[2pt]
+	\end{tabular}
+\end{table}
+
+\clearpage
+
+\end{document}
+
+
+% @article 期刊文章
+% @book 有明确出版商的书
+% @ booklet 没有明确出版商或赞助商的印刷品
+% @conference 回忆文章，与inproceeding相同
+% @inbook 书的一部分，可以是章节等
+% @incollection 书的一部分，有小标题
+% @inproceeding 回忆文章
+% @manual 技术文档
+% @masterthesis 硕士论文
+% @misc 大杂烩，没有其他合适的类型时使用
+% @phdthesis 博士论文
+% @proceeding 会议记录
+% @techreport 由学校或其他机构出版的报告，通常含有编号
+% @unpublished 有作者和标题单位正式出版的文件

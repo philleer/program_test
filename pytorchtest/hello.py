@@ -1,5 +1,9 @@
 #!/usr/bin/env python
-print('Hello world!')
+import first
+
+laugh_test = first.Person()
+for i in range(3):
+    laugh_test.laugh()
 
 def square_sum(a, b):
     c = a**2 + b**2
@@ -65,12 +69,10 @@ print 'after move: ', summer.move(5,5)
 ming = Human('male')
 hong = Human('female')
 ming.age = 18
-print ming.age
-print hong.age
+print ming.age, hong.age
 
 ming.name[0] = 'zhang'
-print ming.name
-print hong.name
+print ming.name, hong.name
 
 print superList([2,4,3]) - superList([2,3])
 
@@ -92,15 +94,31 @@ third line
 ''')
 f.close()
 
-f = open("data.txt", "r")
-for line in f:
-    print line, f.tell()
+# f = open("data.txt", "r")
+# for line in f:
+#     print line, f.tell()
 
-print '%c' %f.tell()
+# print '%c' %f.tell()
 
 # print f.readline()
 # contend = f.read(12)
 # print contend[:]
 # print f.readlines()[0]
-f.close()
+# f.close()
+
+def func(a, b = 33, c = 44):
+    print a, b, c
+
+# temp_args = (1, 3, 4)
+# func(temp_args)
+# func(*temp_args)
+
+# S = 'abdfhij'
+# for i in range(0, len(S), 2):
+#     print S[i]
+# for (index, char) in enumerate(S):
+#     print index, char
+print map((lambda x,y: x+y), [1,2,3], [6,7,8])
+raise StopIteration
+raise StopIteration()
 
