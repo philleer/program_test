@@ -1,0 +1,160 @@
+% 主要是关于正则表达式的一些表格
+
+\begin{table}[p]
+	\renewcommand{\arraystretch}{1.5}
+	\newcommand{\tc}[1]{\multicolumn{1}{c}{#1}}
+	\newcommand{\tl}[1]{\multicolumn{1}{l}{#1}}
+	\newcommand{\tr}[1]{\multicolumn{1}{r}{#1}}
+	\centering
+	\begin{sideways}
+		\begin{minipage}{\textheight}
+			\caption[regexp]{Shell基本的正则表达式的基本组成部分}
+			\vspace{0.8em}\centering\wuhao
+			\begin{tabular}{cll}
+				\toprule[2pt]
+				\textbf{正则表达式} & \tc{\textbf{描述}} & \tc{\textbf{示例}}\\[2pt]\midrule[0.8pt]
+				$\backslash$ & 转义符，将特殊字符进行转义，忽略其特殊意义 & a$\backslash$.b匹配a.b，但不能匹配ajb，.被转义为特殊意义\\[8pt]
+				\^{} & 匹配行首，awk中，\^ 则是匹配字符串的开始 & \^tux匹配以tux开头的行\\[8pt]
+				\$ & 匹配行首，awk中，\$则是匹配字符串的结尾 & tux\$匹配以tux结尾的行\\[8pt]
+				. & 匹配除换行符$\backslash$n之外的任意单个字符 & ab.匹配abc或abd，不可匹配abcd或abde，只能是单字符\\[8pt]
+				[ ] & 匹配包含在字符集[]中的任意单个字符 & coo[kl]可以匹配cook或cool\\[8pt]
+				[ \^ \ ] & 匹配字符集[]之外的任意单个字符 & 123[\^45]不可以匹配1234或1235，可以匹配1236、1239等\\[8pt]
+				[$-$] & 匹配[]中指定范围内的任意单个字符，要写成递增 & [0-9]可以匹配1、2或3等其中任意一个数字\\[8pt]
+				$\ast$ & 匹配之前出现的项0次或多次 & co$\ast$l匹配cl、col、cool等\\[8pt]
+				\bottomrule[2pt]
+			\end{tabular}
+		\end{minipage}
+	\end{sideways}
+\end{table}
+
+\begin{table}[htbp]
+	\renewcommand{\arraystretch}{1.5}
+	\newcommand{\tc}[1]{\multicolumn{1}{c}{#1}}
+	\newcommand{\tl}[1]{\multicolumn{1}{l}{#1}}
+	\newcommand{\tr}[1]{\multicolumn{1}{r}{#1}}
+	\centering
+	\caption[breposix]{Shell POSIX字符类}
+	\vspace{0.8em}\centering\wuhao
+	\begin{threeparttable}
+		\begin{tabular}{clc}
+			\toprule[2pt]
+				\textbf{正则表达式} & \tc{\textbf{描述}} & \textbf{示例}\\[2pt]
+			\midrule[0.8pt]
+			[:alnum:] & 匹配任意一个字母或数字字符 & [[:alnum:]]+\\[8pt]
+			[:alpha:] & 匹配任意一个字母字符 & [[:alpha:]]\{4\}\\[8pt]
+			[:blank:] & 空格与制表符（横向和纵向） & [[:blank:]]$\ast$\\[8pt]
+			[:digit:] & 匹配任意一个数字字符 & [[:digit:]]?\\[8pt]
+			[:lower:] & 匹配任一小写字母 & [[:lower:]]\{5,\}\\[8pt]
+			[:upper:] & 匹配任一大写字母 & ([[:upper:]]+)?\\[8pt]
+			[:punct:] & 匹配任一标点符号 & [[:punct:]]\\[8pt]
+			[:space:] & 匹配一个包括换行符、回车等在内的所有空白符 & [[:space:]]+\\[8pt]
+			[:punct:] & 匹配任一标点符号 & [[:punct:]]\\[8pt]
+			[:graph:] & 匹配任一可以看得见且能打印的字符 & [[:graph:]]\\[8pt]
+			[:xdigit:] & 匹配任一十六进制数如0-9,a-f,A-F & [[:xdigit:]]+\\[8pt]
+			[:cntrl:] & 匹配任一控制字符，及ASCII字符集的前32个字符 & [[:cntrl:]]\\[8pt]
+			[:print:] & 匹配任一可以打印的字符 & [[:print:]]\\[8pt]
+
+			\bottomrule[2pt]
+		\end{tabular}
+
+		\begin{tablenotes}
+			\footnotesize
+			\item[1] POSIX字符类是一个形如[:...:]的特殊元序列(meta sequence)，可以用于匹配特定的字符范围。
+		\end{tablenotes}
+	\end{threeparttable}
+\end{table}
+
+\begin{table}[htbp]
+	\renewcommand{\arraystretch}{1.5}
+	\newcommand{\tc}[1]{\multicolumn{1}{c}{#1}}
+	\newcommand{\tl}[1]{\multicolumn{1}{l}{#1}}
+	\newcommand{\tr}[1]{\multicolumn{1}{r}{#1}}
+	\centering
+	\caption[metachar]{Shell基本/扩展正则表达式支持的元字符}
+	\vspace{0.8em}\centering\wuhao
+	\begin{threeparttable}
+		\begin{tabular}{clc}
+			\toprule[2pt]
+			\textbf{正则表达式} & \tc{\textbf{描述}} & \textbf{示例}\\[2pt]
+			\midrule[0.8pt]
+			$\backslash$b & 单词边界 & $\backslash$bcool$\backslash$b匹配cool，不匹配coolant\\[8pt]
+			$\backslash$B & 非单词边界 & cool$\backslash$B匹配coolant，不匹配cool\\[8pt]
+			$\backslash$w & 单个单词字符如字母、数字或下划线 & $\backslash$w匹配1或a，不匹配\&\\[8pt]
+			$\backslash$W & 单个非单词字符 & $\backslash$W匹配\&，不匹配1或a\\[8pt]
+			\bottomrule[2pt]
+		\end{tabular}
+
+		\begin{tablenotes}
+			\footnotesize
+			\item[1] 元字符（meta character）是一种Perl风格的正则表达式，只有一部分文本处理工具支持它，并不是所有的文本处理工具都支持。
+		\end{tablenotes}
+	\end{threeparttable}
+\end{table}
+
+\begin{table}[p]
+	\renewcommand{\arraystretch}{1.5}
+	\newcommand{\tc}[1]{\multicolumn{1}{c}{#1}}
+	\newcommand{\tl}[1]{\multicolumn{1}{l}{#1}}
+	\newcommand{\tr}[1]{\multicolumn{1}{r}{#1}}
+	\centering
+	\begin{sideways}
+		\begin{minipage}{\textheight}
+			\caption[extregexp]{Shell扩展的正则表达式的扩展部分}
+			\vspace{0.8em}\centering\wuhao
+			\begin{threeparttable}
+				\begin{tabular}{cll}
+					\toprule[2pt]
+					\textbf{正则表达式} & \tc{\textbf{描述}} & \tc{\textbf{示例}}\\[2pt]
+					\midrule[0.8pt]
+					? & 匹配之前的项1次或0次 & colou?r可以匹配color或colour，不匹配colouur\\[8pt]
+					+ & 匹配之前的项1次或多次 & sa-6+匹配sa-6、sa-666，不匹配sa-\\[8pt]
+					() & 匹配表达式，创建一个用于匹配的子串 & max(tri)?匹配max或maxtrix\\[8pt]
+					\{n\} & 匹配之前的项n次，n可以为0 & [0-9]\{3\}匹配任意一个三位数，等同于[0-9][0-9][0-9]\\[8pt]
+					\{n,\} & 匹配之前的项至少n次 & [0-9]\{2,\}匹配任意一个两位数或更多位数\\[8pt]
+					\{n,m\} & 匹配之前的项至少n次，之多m次，n<=m & [0-9]\{2,5\}匹配从两位数到五位数之间的任意一个数字\\[8pt]
+					$\mid$ & 交替匹配$\mid$两边的任意一项 & ab(c$\mid$d)匹配abc或abd\\[8pt]
+					\bottomrule[2pt]
+				\end{tabular}
+
+				\begin{tablenotes}
+					\footnotesize
+					\item[1] 只列出相对于基本正则表达式而言扩展的条目，除了基本正则的组成部分之外的组成部分。
+				\end{tablenotes}
+			\end{threeparttable}
+		\end{minipage}
+	\end{sideways}
+\end{table}
+
+% 使用表格脚注需要添加包 \usepackage{threeparttable}
+% 前几行定义新命令，指定单元格居中或居左或居右对齐
+\begin{table}[htbp]
+	\renewcommand{\arraystretch}{1.5}
+	\newcommand{\tc}[1]{\multicolumn{1}{c}{#1}}
+	\newcommand{\tl}[1]{\multicolumn{1}{l}{#1}}
+	\newcommand{\tr}[1]{\multicolumn{1}{r}{#1}}
+	\centering
+	\caption[extmetachar]{Shell Perl正则表达式支持的其他元字符}
+	\vspace{0.8em}\centering\wuhao
+	\begin{threeparttable}
+		\begin{tabular}{clc}
+			\toprule[2pt]
+			\textbf{正则表达式} & \tc{\textbf{描述}} & \textbf{示例}\\[2pt]
+			\midrule[0.8pt]
+			$\backslash$d & 单个数字字符 & b$\backslash$db匹配b2b，不匹配bcb\\[8pt]
+			$\backslash$D & 单个非数字字符 & b$\backslash$Db匹配bcb，不匹配b2b\\[8pt]
+			$\backslash$n & 换行符 & $\backslash$n匹配一个新行\&\\[8pt]
+			$\backslash$s & 单个空白字符 & x$\backslash$sx匹配x\ x，不匹配xx\\[8pt]
+			$\backslash$S & 单个非空白字符 & x$\backslash$S$\backslash$x匹配xkx，不匹配x\ x\\[8pt]
+			$\backslash$r & 回车 & $\backslash$r匹配回车\\[8pt]
+			$\backslash$t & 横向制表符 & $\backslash$t匹配一个横向制表符\\[8pt]
+			$\backslash$v & 垂直制表符 & $\backslash$v匹配一个垂直制表符\\[8pt]
+			$\backslash$f & 换页符 & $\backslash$f匹配一个换页符\\[8pt]
+			\bottomrule[2pt]
+		\end{tabular}
+
+		\begin{tablenotes}
+			\footnotesize
+			\item[1] 只列出Perl风格的正则表达式，相对于基本/扩展正则增加的部分。
+		\end{tablenotes}
+	\end{threeparttable}
+\end{table}
