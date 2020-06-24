@@ -1,16 +1,16 @@
-# Some basic command line in the bash
+# Some bash script for 3D reconstruction
 
-> **Descriptions and links shown as below**
+> **Only Open Sources Algorithms**
 
-* [hello_world.sh](https://github.com/philleer/program_test/blob/master/bashfiles/hello_world.sh) : hello_world of bash script
+* [MVE](https://github.com/simonfuhrmann/mve): run-mve.sh
 
-* [listdir.sh](https://github.com/philleer/program_test/blob/master/bashfiles/listdir.sh) : list the name of file in the folder
+* [SMVS](https://github.com/flanggut/smvs): run-smvs.sh
 
-* [smvs.sh](https://github.com/philleer/program_test/blob/master/bashfiles/smvs.sh) : run smvs procedure in cascade mode
+* [openMVG](https://github.com/openMVG/openMVG)
 
-* [backup.sh](https://github.com/philleer/program_test/blob/master/bashfiles/backup.sh) : backup the file system
+* [openMVS](https://github.com/cdcseacave/openMVS): run-openmvs.sh
 
-* ...
+* [COLMAP](https://github.com/colmap/colmap): run-colmap.sh, run-colmap-tanks.sh
 
 
  ```python
