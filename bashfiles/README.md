@@ -1,6 +1,6 @@
 # Some bash script for 3D reconstruction
 
-> **Only Open Sources Algorithms**
+> **Only Open Sourced Algorithms**
 
 * [MVE](https://github.com/simonfuhrmann/mve): run-mve.sh
 
