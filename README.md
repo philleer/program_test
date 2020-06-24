@@ -6,9 +6,7 @@
 
 * [SMVS](https://github.com/flanggut/smvs): run-smvs.sh
 
-* [openMVG](https://github.com/openMVG/openMVG)
-
-* [openMVS](https://github.com/cdcseacave/openMVS): run-openmvs.sh
+* [openMVG](https://github.com/openMVG/openMVG)+ [openMVS](https://github.com/cdcseacave/openMVS): run-openmvs.sh
 
 * [COLMAP](https://github.com/colmap/colmap): run-colmap.sh, run-colmap-tanks.sh
 
