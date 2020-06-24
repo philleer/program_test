@@ -1,3 +1,0 @@
-the quick brown fox jumped over the lazy dog.
-what do you think about the phenomenon?
-cat >> lazydog.txt
